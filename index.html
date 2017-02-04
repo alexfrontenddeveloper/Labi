@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style.css">
+    <script type="text/javascript">
+        var array = [];//черга-стек №1
+        var array2 = [];//черга-стек №2
+        var array_con = [];// массив конкантинації
+        var array_copy =[];
+        function addelement()//функція наповнення першої черги
+            {
+                var i = document.getElementById('txt').value;
+                array.push(i);
+                document.getElementById('rezult').innerHTML = array.join(",");
+                document.getElementById('txt').value='';
+            }
+        function addelement2()//функція наповнення першого стеку
+            {
+                var i = document.getElementById('txt').value;
+                array.unshift(i);
+                document.getElementById('rezult').innerHTML = array.join(",");
+                document.getElementById('txt').value='';
+            }
+        function addelement4()//функція видалення стеком
+            {
+                array.pop();
+                document.getElementById('rezult').innerHTML = array;
+            }
+        function addelement3()//функція видалення чергою
+            {
+                array.shift();
+                document.getElementById('rezult').innerHTML = array;
+            }
+         function addelement5()//функция видалення декількох елементів "зякого почати скільки видалити"
+            {
+                var e = document.getElementById('element').value;
+                var c = document.getElementById('col').value;
+                array.splice(e, c);
+                document.getElementById('rezult').innerHTML = array;
+                var e = document.getElementById('element').value='';
+                var c = document.getElementById('col').value='';
+            }
+        function addelement6()//функция додавання елемента перед довільним елементом
+            {
+                var e = document.getElementById('element2').value;
+                var c = document.getElementById('delem').value;
+                array.splice(e, 0, c);
+                document.getElementById('rezult').innerHTML = array.join(",");
+                var e = document.getElementById('element2').value='';
+                var c = document.getElementById('delem').value='';
+            }
+        function addelement7()//заміна елемента
+            {
+                var e = document.getElementById('element3').value;
+                var c = document.getElementById('zamelem').value;
+                array.splice(e, 1, c);
+                document.getElementById('rezult').innerHTML = array.join(",");
+                var e = document.getElementById('element3').value='';
+                var c = document.getElementById('zamelem').value='';
+            }
+        function dell_1()//кнопка очистить
+            {
+                array.splice(0, array.length);
+                document.getElementById('rezult').innerHTML = array;
+            }
+/*-----------------------------------------------------------------------------------------------------*/
+        function addelement_2()
+            {
+                var i = document.getElementById('txt2_').value;
+                array2.push(i);
+                document.getElementById('rezult2').innerHTML = array2.join(",");
+                document.getElementById('txt2_').value='';
+            }
+        function addelement2_2()
+            {
+                var i = document.getElementById('txt2_').value;
+                array2.unshift(i);
+                document.getElementById('rezult2').innerHTML = array2.join(",");
+                document.getElementById('txt2_').value='';
+            }
+        function addelement2_4()
+            {
+                array2.pop();
+                document.getElementById('rezult2').innerHTML = array2;
+            }
+        function addelement2_3()
+            {
+                array2.shift();
+                document.getElementById('rezult2').innerHTML = array2;
+            }
+         function addelement2_5()
+            {
+                var e = document.getElementById('element2_').value;
+                var c = document.getElementById('col2_').value;
+                array2.splice(e, c);
+                document.getElementById('rezult2').innerHTML = array2;
+                var e = document.getElementById('element2_').value='';
+                var c = document.getElementById('col2_').value='';
+            }
+        function addelement2_6()
+            {
+                var e = document.getElementById('element2_2').value;
+                var c = document.getElementById('delem2_').value;
+                array2.splice(e, 0, c);
+                document.getElementById('rezult2').innerHTML = array2.join(",");
+                var e = document.getElementById('element2_2').value='';
+                var c = document.getElementById('delem2_').value='';
+            }
+        function addelement2_7()
+            {
+                var e = document.getElementById('element2_3').value;
+                var c = document.getElementById('zamelem2_').value;
+                array2.splice(e, 1, c);
+                document.getElementById('rezult2').innerHTML = array2.join(",");
+                var e = document.getElementById('element2_3').value='';
+                var c = document.getElementById('zamelem2_').value='';
+            }
+        function dell_2()
+            {
+                array2.splice(0, array2.length);
+                document.getElementById('rezult2').innerHTML = array2;
+            }
+/*---------------------------------------------------------------------------------------------------*/
+        function concat()//Функція конкантинації
+            {
+                array_con = array.slice(0,array.length);
+                var co = document.getElementById('conkat3').value;
+                array_con.splice(co, 0, array2);
+                document.getElementById('rezult3').innerHTML = array_con;
+                document.getElementById('conkat3').value='';
+            }
+         function dell_3()
+            {
+                array_con.splice(0, array_con.length);
+                document.getElementById('rezult3').innerHTML = array_con;
+            }
+</script>
+</head>
+<body>
+   <form action="" method="post">
+        <div class="center">
+         <div style="display: inline-block;border: 2px solid #000; padding: 5px; border-radius: 5px;
+    border-color: #2970a9;">
+            <h1>Массив №1</h1>
+             <div class="bloc">
+                <div class="bloc_dii">
+                    <h3>Видалення</h3>
+                    <input type="text" name="textfield" placeholder="З якого почати?" id="element">
+                    <input type="text" name="textfield" placeholder="Скільки елементів потрібно видалити?" id="col">
+                    <input type="button" name="button" value="Видалити елементи" id="Remove" onclick="addelement5()">
+                </div>
+                <div class="bloc_dii">
+                    <h3>Довання</h3>
+                    <input type="text" name="textfield" placeholder="Перед яким додати" id="element2">
+                    <input type="text" name="textfield" placeholder="Елемент :" id="delem">
+                    <input type="button" name="button" value="Додати елемент" id="Remove" onclick="addelement6()">
+                </div>
+                <div class="bloc_dii">
+                    <h3>Заміна</h3>
+                    <input type="text" name="textfield" placeholder="Що замінити" id="element3">
+                    <input type="text" name="textfield" placeholder="Елемент :" id="zamelem">
+                    <input type="button" name="button" value="Замінити елемент" id="Remove" onclick="addelement7()">
+                </div>
+            </div>
+           <div class="mas_bloc">
+                <input type="button" name="button" value="Черга" id="btn1" onclick="addelement()">
+                <input type="button" name="button" value="Стек" id="btn2" onclick="addelement2()">
+                <input type="button" name="button" value="Видалення чергою" id="btn1" onclick="addelement3()">
+                <input type="button" name="button" value="Видалення стеком" id="btn2" onclick="addelement4()">
+                <input type="text" name="textfield" placeholder="Елемент массиву :" id="txt">
+                <textarea name="textarea" placeholder="Массив даних 1 :" id="rezult"></textarea>
+                <input type="button" name="button" id="delete_1" value="Очистити" onclick="dell_1()">
+           </div>
+         </div>
+<!--***************************************************************************************************-->
+           <div style="display: inline-block;border: 2px solid #000; padding: 5px; border-radius: 5px;
+    border-color: #2970a9;">
+               <h1>Массив №2</h1>
+                <div class="bloc">
+            <div class="bloc_dii">
+                <h3>Видалення</h3>
+                <input type="text" name="textfield" placeholder="З якого почати?" id="element2_">
+                <input type="text" name="textfield" placeholder="Скільки елементів потрібно видалити?" id="col2_">
+                <input type="button" name="button" value="Видалити елементи" id="Remove2_" onclick="addelement2_5()">
+            </div>
+            <div class="bloc_dii">
+                <h3>Довання</h3>
+                <input type="text" name="textfield" placeholder="Перед яким додати" id="element2_2">
+                <input type="text" name="textfield" placeholder="Елемент :" id="delem2_">
+                <input type="button" name="button" value="Додати елемент" id="Remove" onclick="addelement2_6()">
+            </div>
+            <div class="bloc_dii">
+                <h3>Заміна</h3>
+                <input type="text" name="textfield" placeholder="Що замінити" id="element2_3">
+                <input type="text" name="textfield" placeholder="Елемент :" id="zamelem2_">
+                <input type="button" name="button" value="Замінити елемент" id="Remove" onclick="addelement2_7()">
+            </div>
+        </div>
+           <div class="mas_bloc">
+                <input type="button" name="button" value="Черга" id="btn2_1" onclick="addelement_2()">
+                <input type="button" name="button" value="Стек" id="btn2_2" onclick="addelement2_2()">
+                <input type="button" name="button" value="Видалення чергою" id="btn2_1" onclick="addelement2_3()">
+                <input type="button" name="button" value="Видалення стеком" id="btn2_2" onclick="addelement2_4()">
+                <input type="text" name="textfield" placeholder="Елемент массиву :" id="txt2_">
+                <textarea name="textarea" placeholder="Массив даних 2 :" id="rezult2"></textarea>
+            <input type="button" name="button" value="Очистити" id="delete_2" onclick="dell_2()">
+           </div>
+           </div>
+           <div class="mas_bloc">
+               <h3>Массив конкантинації</h3>
+                <textarea name="textarea" placeholder="Массив даних :" id="rezult3"></textarea>
+                <input type="button" name="button" value="Очистити" id="delete_3" onclick="dell_3()">
+                <h3>Конкантинація</h3>
+                <input type="text" name="textfield" placeholder="Номер елементу :" id="conkat3">
+                <input type="button" name="button" value="Конкантинувати" id="conkat" onclick="concat()">
+           </div>
+        </div>
+   </form>
+</body>
+</html>
